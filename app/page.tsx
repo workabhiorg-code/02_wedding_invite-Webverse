@@ -1,22 +1,21 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import WeddingInvitation from '@/components/WeddingInvitation';
-import LoadingScreen from '@/components/LoadingScreen';
-
-function InvitationContent() {
-  const searchParams = useSearchParams();
-  const guestName = searchParams.get('guest') || '';
-
-  return <WeddingInvitation guestName={guestName} />;
-}
 
 export default function Home() {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <InvitationContent />
-    </Suspense>
-  );
+  const [guestName, setGuestName] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const guest = params.get('guest') || '';
+      if (guest) {
+        setGuestName(guest);
+      }
+    }
+  }, []);
+
+  return <WeddingInvitation guestName={guestName} />;
 }
 
