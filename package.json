@@ -1,12 +1,14 @@
 {
-  "name": "my-project",
+  "name": "02-wedding-invite-webverse",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3006",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "1.2.12",
@@ -57,7 +59,8 @@
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.0",
     "tailwind-merge": "^3.3.1",
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "@opennextjs/cloudflare": "^1.20.11"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.0",
@@ -67,6 +70,7 @@
     "@types/react-dom": "19.2.3",
     "postcss": "^8.5",
     "tailwindcss": "^4.2.0",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "wrangler": "^4.150.0"
   }
 }
